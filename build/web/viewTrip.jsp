@@ -17,59 +17,43 @@
             <%
                 Connection con = DatabaseConnection.initializeDatabase();
                 String uid = request.getAttribute("uid").toString();
-                PreparedStatement ps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\" where \"userdId\" = " + uid);
+                String tid = request.getAttribute("tid").toString();
+                PreparedStatement ps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\" where \"id\" = " + tid);
                 ResultSet rs = ps.executeQuery ();
                 ResultSetMetaData rsmd = rs.getMetaData (); 
                 con.close();
-            %>
-
-            <h1>Tus viajes:</h1>
-            <%
-                out.print("<table border = \"1\" width = \"100%\">");
-            %>
-            <tr>
-                <th>Destino</th>
-                <th>Fecha</th>
-                <th>Presupuesto</th>
-                <th>Gastos Actuales</th>
-                <th>Presupuesto restante</th>
-                <th>Ver detalle</th>
-            </tr>
-            <%
                 while (rs.next ())
                 {
-                    out.print ("<form action=\"viewTrip\">");
-                    out.print("<input type=\"hidden\" name=\"userId\" value=\""+ rs.getInt(5) +"\">");
-                    out.print("<input type=\"hidden\" name=\"tripId\" value=\""+ rs.getInt(1) +"\">");
+                out.print("<h1>Tu viaje a " + rs.getString(2) + " el " + rs.getString(6) +":</h1>");
+                   
+                out.print("<table border = \"1\" width = \"100%\">");
+                
+            out.print ("<tr>");
+                out.print ("<th>Destino</th>");
+                out.print ("<th>Fecha</th>");
+                out.print ("<th>Presupuesto</th>");
+                out.print ("<th>Gastos Actuales</th>");
+                out.print ("<th>Presupuesto restante</th>");
+            out.print ("</tr>");
                     out.print ("<tr>");
                     out.print ("<td>"+rs.getString(2)+"</td>");
                     out.print ("<td>"+rs.getString(6)+"</td>");
                     out.print ("<td>"+rs.getDouble(3)+"</td>");
                     out.print ("<td>"+rs.getDouble(4)+"</td>");
                     out.print ("<td>"+((1-rs.getDouble(4)/rs.getDouble(3))*100)+"%</td>");
-                    out.print ("<td><input type=\"submit\" value=\"Ver detalle\"></td>");
                     out.print ("</tr>");
-                    out.print ("</form>");
                 }
             %>
         </table>
-        <form action="newTrip">
             <%
-                out.print("<input type=\"hidden\" name=\"uid\" value=\""+ uid +"\"><br>");
-            %>
-            <input type="submit" value="Nuevo viaje">
-        </form>
-            
-        <%
                 Connection con2 = DatabaseConnection.initializeDatabase();
-                uid = request.getAttribute("uid").toString();
-                PreparedStatement ps2 = con2.prepareStatement ("SELECT * FROM \"public\".\"Expense\" where \"userId\" = " + uid);
+                PreparedStatement ps2 = con2.prepareStatement ("SELECT * FROM \"public\".\"Expense\" where \"tripId\" = " + tid + " AND \"userId\" = " + uid);
                 ResultSet rs2 = ps2.executeQuery ();
                 ResultSetMetaData rsmd2 = rs2.getMetaData (); 
                 con2.close();
             %>
 
-            <h1>Tu historial de gastos:</h1>
+            <h1>Tus gastos asociados a este viaje:</h1>
             <%
                 out.print("<table border = \"1\" width = \"100%\">");
             %>

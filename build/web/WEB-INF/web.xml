@@ -36,4 +36,13 @@
   <url-pattern>/addTrip</url-pattern>
  </servlet-mapping>
  
+  <servlet>
+  <servlet-name>viewTrip</servlet-name>
+  <servlet-class>connections.viewTrip</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>viewTrip</servlet-name>
+  <url-pattern>/viewTrip</url-pattern>
+ </servlet-mapping>
+ 
 </web-app>

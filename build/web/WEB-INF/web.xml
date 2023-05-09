@@ -17,4 +17,23 @@
   <servlet-name>LogIn</servlet-name>
   <url-pattern>/login</url-pattern>
  </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>newTrip</servlet-name>
+  <servlet-class>connections.newTrip</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>newTrip</servlet-name>
+  <url-pattern>/newTrip</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>addTrip</servlet-name>
+  <servlet-class>connections.addTrip</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>addTrip</servlet-name>
+  <url-pattern>/addTrip</url-pattern>
+ </servlet-mapping>
+ 
 </web-app>

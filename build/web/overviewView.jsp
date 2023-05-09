@@ -33,17 +33,23 @@
                 <th>Presupuesto</th>
                 <th>Gastos Actuales</th>
                 <th>Presupuesto restante</th>
+                <th>Ver detalle</th>
             </tr>
             <%
                 while (rs.next ())
                 {
+                    out.print ("<form action=\"viewTrip\">");
+                    out.print("<input type=\"hidden\" name=\"userId\" value=\""+ rs.getInt(5) +"\">");
+                    out.print("<input type=\"hidden\" name=\"tripId\" value=\""+ rs.getInt(1) +"\">");
                     out.print ("<tr>");
                     out.print ("<td>"+rs.getString(2)+"</td>");
                     out.print ("<td>"+rs.getString(6)+"</td>");
                     out.print ("<td>"+rs.getDouble(3)+"</td>");
                     out.print ("<td>"+rs.getDouble(4)+"</td>");
                     out.print ("<td>"+((1-rs.getDouble(4)/rs.getDouble(3))*100)+"%</td>");
+                    out.print ("<td><input type=\"submit\" value=\"Ver detalle\"></td>");
                     out.print ("</tr>");
+                    out.print ("</form>");
                 }
             %>
         </table>
@@ -63,7 +69,7 @@
                 con2.close();
             %>
 
-            <h1>Tus gastos:</h1>
+            <h1>Tu historial de gastos:</h1>
             <%
                 out.print("<table border = \"1\" width = \"100%\">");
             %>

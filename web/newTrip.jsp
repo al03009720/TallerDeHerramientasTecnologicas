@@ -14,21 +14,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            Connection con = DatabaseConnection.initializeDatabase();
-            String uid = request.getAttribute("uid").toString();
-         %>
-        <form action="login">
-            <h1>Log In</h1><br>
+        <form action="addTrip" method="post">
+            <h1>Nuevo Viaje</h1><br>
             Destino:<br>
             <input type="text" name="destination" value=""><br>
             Fecha:<br>
             <input type="text" name="date" value=""><br>
             Presupuesto:<br>
             <input type="text" name="budget" value=""><br>
-            Fecha:<br>
-            <input type="text" name="date" value=""><br>
-            <input type="submit" value="search">
+            <%
+                String uid = request.getAttribute("uid").toString();
+                out.print("<input type=\"hidden\" name=\"userId\" value=\""+ uid +"\"><br>");
+            %>
+            <input type="submit" value="Guardar viaje">
         </form>
     </body>
 </html>

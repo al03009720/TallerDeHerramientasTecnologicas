@@ -18,7 +18,7 @@
             <input type="text" name="user" value=""><br>
             Contraseña:<br>
             <input type="text" name="pswd" value=""><br>
-            <input type="submit" value="search">
+            <input type="submit" value="Log In">
         </form>
     </body>
 </html>

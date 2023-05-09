@@ -14,7 +14,7 @@ import connections.DatabaseConnection;
  *
  * @author USER
  */
-public class loginLogic extends HttpServlet {
+public class tripList extends HttpServlet {
     
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

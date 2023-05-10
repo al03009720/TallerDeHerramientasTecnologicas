@@ -14,28 +14,19 @@ import connections.DatabaseConnection;
  *
  * @author USER
  */
-public class addTrip extends HttpServlet {
+public class deleteTrip extends HttpServlet {
     
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType ("text/html");
-        String userid = request.getParameter("userId");
-        String destino = request.getParameter("destination");
-        String fecha = request.getParameter("date");
-        String presupuesto = request.getParameter("budget");
+        String userid = request.getParameter("uid");
+        String tripid = request.getParameter("tid");
         PrintWriter out = response.getWriter ();
         try
         {
             Connection con = DatabaseConnection.initializeDatabase();
             
-            PreparedStatement qps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\"");
-            ResultSet qrs = qps.executeQuery ();
-            ResultSetMetaData qrsmd = qrs.getMetaData ();
-            Integer qlength = 2;
-            while(qrs.next ()){
-                qlength++;
-            }
-            PreparedStatement ps = con.prepareStatement ("INSERT INTO \"public\".\"Trips\" (id,date,destination,budget,\"totalExpenses\",\"userdId\") VALUES (" + qlength + ",\'" + fecha + "\',\'"+destino+"\',"+ presupuesto + ",0,"+ userid +")");
+            PreparedStatement ps = con.prepareStatement ("DELETE FROM \"public\".\"Trips\" WHERE id = " + tripid);
             Integer ei = ps.executeUpdate ();
             con.close();
             request.setAttribute("uid",userid);

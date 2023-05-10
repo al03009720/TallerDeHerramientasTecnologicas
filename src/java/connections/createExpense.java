@@ -14,32 +14,45 @@ import connections.DatabaseConnection;
  *
  * @author USER
  */
-public class addTrip extends HttpServlet {
+public class createExpense extends HttpServlet {
     
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType ("text/html");
         String userid = request.getParameter("userId");
-        String destino = request.getParameter("destination");
+        String tripid = request.getParameter("tripId");
+        String categoria = request.getParameter("category");
         String fecha = request.getParameter("date");
-        String presupuesto = request.getParameter("budget");
+        String gasto = request.getParameter("expense");
         PrintWriter out = response.getWriter ();
         try
         {
             Connection con = DatabaseConnection.initializeDatabase();
             
-            PreparedStatement qps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\"");
+            PreparedStatement qps = con.prepareStatement ("SELECT * FROM \"public\".\"Expense\"");
             ResultSet qrs = qps.executeQuery ();
             ResultSetMetaData qrsmd = qrs.getMetaData ();
             Integer qlength = 2;
             while(qrs.next ()){
                 qlength++;
             }
-            PreparedStatement ps = con.prepareStatement ("INSERT INTO \"public\".\"Trips\" (id,date,destination,budget,\"totalExpenses\",\"userdId\") VALUES (" + qlength + ",\'" + fecha + "\',\'"+destino+"\',"+ presupuesto + ",0,"+ userid +")");
+            PreparedStatement tps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\" where id="+tripid);
+            ResultSet trs = tps.executeQuery ();
+            ResultSetMetaData trsmd = trs.getMetaData ();
+            Double gastoTotal = 0.0;
+            while(trs.next ()){
+                gastoTotal = trs.getDouble(4) + Double.parseDouble(gasto);
+            }
+            
+            PreparedStatement ups = con.prepareStatement ("UPDATE \"public\".\"Trips\" SET \"totalExpenses\"="+gastoTotal+" WHERE id="+tripid);
+            Integer uei = ups.executeUpdate ();
+            
+            PreparedStatement ps = con.prepareStatement ("INSERT INTO \"public\".\"Expense\" (id,\"userId\",\"tripId\",amount,category,date) VALUES (" + qlength +","+ userid+ "," +tripid+ "," +gasto+",\'" +categoria+"\',\'" + fecha +"\')");
             Integer ei = ps.executeUpdate ();
             con.close();
             request.setAttribute("uid",userid);
-            request.getRequestDispatcher("/overviewView.jsp").forward(request,response);
+            request.setAttribute("tid",tripid);
+            request.getRequestDispatcher("/viewTrip.jsp").forward(request,response);
             out.close ();
         }
         catch (Exception e2)

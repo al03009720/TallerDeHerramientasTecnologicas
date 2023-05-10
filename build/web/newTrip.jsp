@@ -14,7 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="addTrip" method="post">
+        <form action="addTrip">
             <h1>Nuevo Viaje</h1><br>
             Destino:<br>
             <input type="text" name="destination" value=""><br>

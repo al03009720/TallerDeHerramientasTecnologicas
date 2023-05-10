@@ -14,17 +14,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="addTrip">
-            <h1>Nuevo Viaje</h1><br>
-            Destino:<br>
-            <input type="text" name="destination" value=""><br>
+        <form action="createExpense">
+            <h1>Nuevo Gasto</h1><br>
+            categoria:<br>
+            <input type="text" name="category" value=""><br>
             Fecha:<br>
             <input type="text" name="date" value=""><br>
-            Presupuesto:<br>
-            <input type="text" name="budget" value=""><br>
+            Cantidad gastada:<br>
+            <input type="text" name="expense" value=""><br>
             <%
                 String uid = request.getAttribute("uid").toString();
-                out.print("<input type=\"hidden\" name=\"userId\" value=\""+ uid +"\"><br>");
+                out.print("<input type=\"hidden\" name=\"userId\" value=\""+ uid +"\">");
+                String tid = request.getAttribute("tid").toString();
+                out.print("<input type=\"hidden\" name=\"tripId\" value=\""+ tid +"\">");
             %>
             <input type="submit" value="Guardar viaje">
         </form>

@@ -45,4 +45,49 @@
   <url-pattern>/viewTrip</url-pattern>
  </servlet-mapping>
  
+ <servlet>
+  <servlet-name>deleteTrip</servlet-name>
+  <servlet-class>connections.deleteTrip</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>deleteTrip</servlet-name>
+  <url-pattern>/deleteTrip</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>editTrip</servlet-name>
+  <servlet-class>connections.editTrip</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>editTrip</servlet-name>
+  <url-pattern>/editTrip</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>updateTrip</servlet-name>
+  <servlet-class>connections.updateTrip</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>updateTrip</servlet-name>
+  <url-pattern>/updateTrip</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>addExpense</servlet-name>
+  <servlet-class>connections.addExpense</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>addExpense</servlet-name>
+  <url-pattern>/addExpense</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>createExpense</servlet-name>
+  <servlet-class>connections.createExpense</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>createExpense</servlet-name>
+  <url-pattern>/createExpense</url-pattern>
+ </servlet-mapping>
+ 
 </web-app>

@@ -21,13 +21,20 @@
                 PreparedStatement ps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\" where \"id\" = " + tid);
                 ResultSet rs = ps.executeQuery ();
                 ResultSetMetaData rsmd = rs.getMetaData (); 
+                String destination = "";
+                String date = "";
+                Double budget = 0.0;
+                Double expenses = 0.0;
                 con.close();
                 while (rs.next ())
                 {
                 out.print("<h1>Tu viaje a " + rs.getString(2) + " el " + rs.getString(6) +":</h1>");
                    
                 out.print("<table border = \"1\" width = \"100%\">");
-                
+                destination = rs.getString(2);
+                date = rs.getString(6);
+                budget = rs.getDouble(3);
+                expenses = rs.getDouble(4);
             out.print ("<tr>");
                 out.print ("<th>Destino</th>");
                 out.print ("<th>Fecha</th>");
@@ -45,6 +52,24 @@
                 }
             %>
         </table>
+            <form action="deleteTrip">
+                <%
+                    out.print("<input type=\"hidden\" name=\"uid\" value=\""+ uid +"\">");
+                    out.print("<input type=\"hidden\" name=\"tid\" value=\""+ tid +"\">");
+                %>
+                <input type="submit" value="Elimnar viaje">
+            </form>
+            <form action="editTrip">
+                <%
+                    out.print("<input type=\"hidden\" name=\"destination\" value=\""+ destination +"\">");
+                    out.print("<input type=\"hidden\" name=\"date\" value=\""+ date +"\">");
+                    out.print("<input type=\"hidden\" name=\"budget\" value=\""+ budget +"\">");
+                    out.print("<input type=\"hidden\" name=\"expenses\" value=\""+ expenses +"\">");
+                    out.print("<input type=\"hidden\" name=\"uid\" value=\""+ uid +"\">");
+                    out.print("<input type=\"hidden\" name=\"tid\" value=\""+ tid +"\">");
+                %>
+                <input type="submit" value="Editar viaje">
+            </form>
             <%
                 Connection con2 = DatabaseConnection.initializeDatabase();
                 PreparedStatement ps2 = con2.prepareStatement ("SELECT * FROM \"public\".\"Expense\" where \"tripId\" = " + tid + " AND \"userId\" = " + uid);
@@ -73,5 +98,12 @@
                 }
             %>
         </table>
+        <form action="addExpense">
+            <%
+                out.print("<input type=\"hidden\" name=\"uid\" value=\""+ uid +"\">");
+                out.print("<input type=\"hidden\" name=\"tid\" value=\""+ tid +"\">");
+            %>
+            <input type="submit" value="Agregar gasto">
+        </form>
     </body>
 </html>

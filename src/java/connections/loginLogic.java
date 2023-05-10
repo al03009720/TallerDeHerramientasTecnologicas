@@ -41,7 +41,7 @@ public class loginLogic extends HttpServlet {
                     if(rs.getString (2).equals(username) && rs.getString(3).equals(password)){
                         found = true;
                         request.setAttribute("uid",rs.getInt(1));
-                        request.getRequestDispatcher("./overviewView.jsp").forward(request,response);
+                        request.getRequestDispatcher("/overviewView.jsp").forward(request,response);
                     }
                 }
                 if(!found){

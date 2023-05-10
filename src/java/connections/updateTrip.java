@@ -14,32 +14,28 @@ import connections.DatabaseConnection;
  *
  * @author USER
  */
-public class addTrip extends HttpServlet {
+public class updateTrip extends HttpServlet {
     
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType ("text/html");
         String userid = request.getParameter("userId");
+        String tripid = request.getParameter("tripId");
         String destino = request.getParameter("destination");
         String fecha = request.getParameter("date");
+        String gastos = request.getParameter("expenses");
         String presupuesto = request.getParameter("budget");
         PrintWriter out = response.getWriter ();
         try
         {
             Connection con = DatabaseConnection.initializeDatabase();
             
-            PreparedStatement qps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\"");
-            ResultSet qrs = qps.executeQuery ();
-            ResultSetMetaData qrsmd = qrs.getMetaData ();
-            Integer qlength = 2;
-            while(qrs.next ()){
-                qlength++;
-            }
-            PreparedStatement ps = con.prepareStatement ("INSERT INTO \"public\".\"Trips\" (id,date,destination,budget,\"totalExpenses\",\"userdId\") VALUES (" + qlength + ",\'" + fecha + "\',\'"+destino+"\',"+ presupuesto + ",0,"+ userid +")");
+            PreparedStatement ps = con.prepareStatement ("UPDATE \"public\".\"Trips\" SET id="+tripid+", destination=\'"+destino+"\', budget="+presupuesto+", \"totalExpenses\"="+gastos+",\"userdId\"="+userid+", date=\'"+fecha+"\' WHERE id="+tripid);
             Integer ei = ps.executeUpdate ();
             con.close();
             request.setAttribute("uid",userid);
-            request.getRequestDispatcher("/overviewView.jsp").forward(request,response);
+            request.setAttribute("tid",tripid);
+            request.getRequestDispatcher("./viewTrip.jsp").forward(request,response);
             out.close ();
         }
         catch (Exception e2)

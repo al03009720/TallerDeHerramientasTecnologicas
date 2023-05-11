@@ -45,8 +45,7 @@ public class loginLogic extends HttpServlet {
                     }
                 }
                 if(!found){
-                    out.print ("<div> User not found   ");
-                    out.print ("</div>");
+                    request.getRequestDispatcher("/index.jsp").forward(request,response);
                 }
             }
             catch (Exception e2)

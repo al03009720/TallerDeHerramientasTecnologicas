@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
- <servlet>
-  <servlet-name>Search</servlet-name>
-  <servlet-class>connections.Search</servlet-class>
- </servlet>
- <servlet-mapping>
-  <servlet-name>Search</servlet-name>
-  <url-pattern>/servlet/Search</url-pattern>
- </servlet-mapping>
- 
+
  <servlet>
   <servlet-name>LogIn</servlet-name>
   <servlet-class>connections.loginLogic</servlet-class>
@@ -28,12 +20,21 @@
  </servlet-mapping>
  
  <servlet>
-  <servlet-name>addTrip</servlet-name>
-  <servlet-class>connections.addTrip</servlet-class>
+  <servlet-name>back</servlet-name>
+  <servlet-class>connections.back</servlet-class>
  </servlet>
  <servlet-mapping>
-  <servlet-name>addTrip</servlet-name>
-  <url-pattern>/addTrip</url-pattern>
+  <servlet-name>back</servlet-name>
+  <url-pattern>/back</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>insertTrip</servlet-name>
+  <servlet-class>connections.insertTrip</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>insertTrip</servlet-name>
+  <url-pattern>/insertTrip</url-pattern>
  </servlet-mapping>
  
   <servlet>

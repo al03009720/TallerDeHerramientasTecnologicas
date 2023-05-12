@@ -14,7 +14,7 @@ import connections.DatabaseConnection;
  *
  * @author USER
  */
-public class addTrip extends HttpServlet {
+public class insertTrip extends HttpServlet {
     
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

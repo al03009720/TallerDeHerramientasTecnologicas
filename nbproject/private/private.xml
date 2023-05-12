@@ -3,9 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/Search.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/viewTrip.jsp</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/insertTrip.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/editTrip.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/index.jsp</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/back.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/DatabaseConnection.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/createExpense.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/loginLogic.java</file>
             <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/editTrip.jsp</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/viewTrip.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/addExpense.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/tripList.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/overviewView.jsp</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/newExpense.jsp</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/deleteTrip.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/src/java/connections/newTrip.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/Fase4/web/newTrip.jsp</file>
         </group>
     </open-files>
 </project-private>

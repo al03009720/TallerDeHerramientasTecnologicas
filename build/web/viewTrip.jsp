@@ -16,7 +16,13 @@
     <body style="margin: 0 auto ;padding: 0; height:100vh">
         <div style="width: 100%; height:10%; background-color: #DDCCFC;">
             <div style="float:left;width: 10%; height:100%; color:black; justify-content: center">
-                <img style="width:50px; height:50px; margin-left: 25px; margin-top: 25px; cursor: pointer" onclick="history.back()" src="https://cdn.iconscout.com/icon/free/png-256/free-back-arrow-1767523-1502427.png" alt="Back">
+                <form action="back">
+                    <%
+                    String uid = request.getAttribute("uid").toString();
+                    out.print("<input type=\"hidden\" name=\"uid\" value=\""+ uid +"\">");
+                    %>
+                    <input style="width:50px; height:50px; margin-left: 25px; margin-top: 25px; cursor: pointer" alt="back" src="https://cdn.iconscout.com/icon/free/png-256/free-back-arrow-1767523-1502427.png" type="image">
+                </form>
             </div>
             <div style="float:left;width: 90%; height:100%; color:black; justify-content: center">
                 <h1 style="margin-left:35%;">Detalle de viaje</h1>
@@ -25,7 +31,7 @@
         <div style="width:95%; margin:auto; ">
             <%
                 Connection con = DatabaseConnection.initializeDatabase();
-                String uid = request.getAttribute("uid").toString();
+                uid = request.getAttribute("uid").toString();
                 String tid = request.getAttribute("tid").toString();
                 PreparedStatement ps = con.prepareStatement ("SELECT * FROM \"public\".\"Trips\" where \"id\" = " + tid);
                 ResultSet rs = ps.executeQuery ();
@@ -69,6 +75,7 @@
                 out.print ("<th>Fecha</th>");
                 out.print ("<th>Presupuesto</th>");
                 out.print ("<th>Gastos Actuales</th>");
+                out.print ("<th>Presupuesto restante</th>");
                 out.print ("<th>Porcentaje de presupuesto restante</th>");
             out.print ("</tr>");
                     out.print ("<tr>");
@@ -76,6 +83,7 @@
                     out.print ("<td style=\"padding-left:5px\">"+rs.getString(6)+"</td>");
                     out.print ("<td style=\"padding-left:5px\">$"+rs.getDouble(3)+"</td>");
                     out.print ("<td style=\"padding-left:5px\">$"+rs.getDouble(4)+"</td>");
+                    out.print ("<td style=\"padding-left:5px\">$"+(rs.getDouble(3) - rs.getDouble(4))+"</td>");
                     out.print ("<td style=\"padding-left:5px\">"+((1-rs.getDouble(4)/rs.getDouble(3))*100)+"%</td>");
                     out.print ("</tr>");
                 }

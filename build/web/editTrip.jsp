@@ -14,7 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body style="margin: 0 ;padding: 0">
-        <form action="addTrip">
+        <form action="updateTrip">
             <div style="float:left; width:30%; height: 100vh;">
                 <img style="width:50px; height:50px; margin-left: 25px; margin-top: 25px; cursor: pointer" onclick="history.back()" src="https://cdn.iconscout.com/icon/free/png-256/free-back-arrow-1767523-1502427.png" alt="Back">
                 <div style=" width:50%; margin:auto; margin-top:40%">
